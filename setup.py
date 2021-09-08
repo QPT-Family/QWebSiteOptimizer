@@ -17,7 +17,8 @@ setup(
     author='GT-ZhangAcer',
     author_email='zhangacer@foxmail.com',
     description='QWebSite',
-    install_requires=["click"],
+    install_requires=["click",
+                      "ping3"],
     python_requires='>3.5',
     include_package_data=True,
     entry_points={

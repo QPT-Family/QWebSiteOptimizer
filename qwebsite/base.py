@@ -32,7 +32,8 @@ class EditHost:
         self.host_kv[address] = ip
 
     def del_data(self, address):
-        self.host_kv.pop(address)
+        if address in self.host_kv:
+            self.host_kv.pop(address)
 
     def _update(self):
         self.hosts_data = list()
@@ -68,10 +69,11 @@ class BaseOptimizer:
         self._make()
 
     def _make(self):
-        for url in self.urls:
-            if self.mode == RESET_FLAG:
+        if self.mode == RESET_FLAG:
+            for url in self.urls:
                 self.ed.del_data(url)
-            else:
+        else:
+            for url in self.urls:
                 ip_info = get_active_ip("www.baidu.com")
                 if ip_info:
                     ip, ms = ip_info[0]

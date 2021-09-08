@@ -21,14 +21,22 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
 
 * 优化命令  
   * Windows  
-  `python -m qwebsite`
+  ```
+  python -m qwebsite
+  ```
   * Linux or MacOS  
-  `sudo python -m qwebsite`
+  ```
+  sudo python -m qwebsite
+  ```
 * 恢复命令  
   * Windows  
-  `python -m qwebsite -r True`
+  ```
+  python -m qwebsite -r True
+  ```
   * Linux or MacOS  
-  `sudo python -m qwebsite -r True`
+  ```
+  sudo python -m qwebsite -r True
+  ```
 
 ## 开源协议
 本项目使用GNU LESSER GENERAL PUBLIC LICENSE(LGPL)开源协议。

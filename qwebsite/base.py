@@ -64,23 +64,27 @@ class BaseOptimizer:
     def __init__(self, urls, mode=ADD_FLAG):
         self.urls = urls
         self.ed = EditHost()
+        self.mode = mode
         self._make()
 
     def _make(self):
         for url in self.urls:
-            ip_info = get_active_ip("www.baidu.com")
-            if ip_info:
-                ip, ms = ip_info[0]
-                print(f"Info: {url}\t匹配到最快路径，延时为{ms}")
-                self.ed.add_data(ip, url)
+            if self.mode == RESET_FLAG:
+                self.ed.del_data(url)
             else:
-                print(f"Warning: {url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
-                      f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。")
+                ip_info = get_active_ip("www.baidu.com")
+                if ip_info:
+                    ip, ms = ip_info[0]
+                    print(f"Info: {url}\t匹配到最快路径，延时为{ms}")
+                    self.ed.add_data(ip, url)
+                else:
+                    print(f"Warning: {url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
+                          f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。")
         self.ed.write()
 
 
 class GitHubOptimizer(BaseOptimizer):
-    def __init__(self):
+    def __init__(self, mode=ADD_FLAG):
         # 此处URL来源整理自
         urls = ["alive.github.com",
                 "live.github.com",
@@ -114,7 +118,7 @@ class GitHubOptimizer(BaseOptimizer):
                 "githubstatus.com",
                 "github.community",
                 "media.githubusercontent.com"]
-        super(GitHubOptimizer, self).__init__(urls)
+        super(GitHubOptimizer, self).__init__(urls, mode)
 
 
 if __name__ == '__main__':

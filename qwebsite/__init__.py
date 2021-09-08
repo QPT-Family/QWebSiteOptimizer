@@ -7,4 +7,4 @@ from qwebsite.flags import *
 
 print("当前操作系统：", OS_FLAG)
 
-__version__ = "0.2a"
+__version__ = "0.2a1"

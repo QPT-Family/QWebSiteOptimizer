@@ -1,4 +1,6 @@
 import socket
+import time
+
 import ping3
 
 from qwebsite.flags import *
@@ -9,7 +11,7 @@ def get_active_ip(host="github.com"):
     ips = list()
     for item in result:
         ip = item[4][0]
-        ping_time = ping3.ping(ip, timeout=1, unit='ms')
+        ping_time = ping3.ping(ip, timeout=4, unit='ms')
         if ping_time:
             ips.append((ip, ping_time))
     ips_sort = sorted(ips, key=lambda x: x[1])
@@ -74,14 +76,19 @@ class BaseOptimizer:
                 self.ed.del_data(url)
         else:
             for url in self.urls:
-                ip_info = get_active_ip("www.baidu.com")
-                if ip_info:
-                    ip, ms = ip_info[0]
-                    print(f"Info: {url}\t匹配到最快路径，延时为{ms}")
-                    self.ed.add_data(ip, url)
+                for i in range(3):
+                    ip_info = get_active_ip(url)
+                    if ip_info:
+                        ip, ms = ip_info[0]
+                        print(f"Info:\t{url}\t匹配到最快路径，延时为{ms:.4f}ms")
+                        self.ed.add_data(ip, url)
+                        break
+                    else:
+                        print(f"\r正在尝试重连...第{i + 1}次", flush=True, end="")
+                        time.sleep(3)
                 else:
-                    print(f"Warning: {url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
-                          f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。")
+                    print(f"\n\033[33mWarning:\t{url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
+                          f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。\033[0m")
         self.ed.write()
 
 

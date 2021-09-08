@@ -22,4 +22,4 @@ def cli(reset):
 
 
 if __name__ == '__main__':
-    cli([])
+    cli(["-r", "True"])

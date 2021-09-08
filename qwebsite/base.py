@@ -87,7 +87,7 @@ class BaseOptimizer:
                         print(f"\r正在尝试重连...第{i + 1}次", flush=True, end="")
                         time.sleep(3)
                 else:
-                    print(f"\n\033[33mWarning:\t{url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
+                    print(f"\r\033[33mWarning:\t{url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
                           f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。\033[0m")
         self.ed.write()
 

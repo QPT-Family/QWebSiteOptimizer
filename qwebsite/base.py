@@ -10,7 +10,11 @@ def get_active_ip(host="github.com"):
     result = socket.getaddrinfo(host, None, socket.AddressFamily.AF_INET, socket.SOCK_STREAM)
     ips = list()
     for item in result:
-        ip = item[4][0]
+        # ToDo 回家看看还有啥情况
+        try:
+            ip = item[4][0]
+        except Exception:
+            continue
         ping_time = ping3.ping(ip, timeout=4, unit='ms')
         if ping_time:
             ips.append((ip, ping_time))

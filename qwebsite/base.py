@@ -98,7 +98,7 @@ class BaseOptimizer:
 
 class GitHubOptimizer(BaseOptimizer):
     def __init__(self, mode=ADD_FLAG):
-        # 此处URL来源整理自
+        # 此处URL来源整理自 GitHub:521xueweihan/GitHub520
         urls = ["alive.github.com",
                 "live.github.com",
                 "github.githubassets.com",

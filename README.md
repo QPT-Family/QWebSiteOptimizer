@@ -1,5 +1,10 @@
 # QWebSiteOptimizer - Web站点速度选优工具
-
+[![Downloads](https://static.pepy.tech/personalized-badge/qwebsite?period=total&units=international_system&left_color=grey&right_color=orange&left_text=Pypi%20User)](https://pepy.tech/project/qwebsite)
+![GitHub forks](https://img.shields.io/github/forks/QPT-Family/QWebSiteOptimizer)
+![GitHub Repo stars](https://img.shields.io/github/stars/QPT-Family/QWebSiteOptimizer)
+![GitHub](https://img.shields.io/github/license/QPT-Family/QWebSiteOptimizer)
+![](https://img.shields.io/badge/支持系统-Win/Linux/MAC-9cf)
+  
 在访问GitHub等网站时，DNS解析到的IP地址可能并不是最快，过慢的节点会严重影响我们的访问情况，故制作出这样的工具来进一步优化网络质量。  
 
 * 由于该方案并非为VPN等方式进行的速度优化，以下几点需要您注意：

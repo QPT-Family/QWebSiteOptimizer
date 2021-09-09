@@ -49,4 +49,4 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
   ```
 
 ## 开源协议
-本项目使用GNU LESSER GENERAL PUBLIC LICENSE(LGPL)开源协议。
+本项目使用GNU General Public License v3.0(GPL)开源协议。

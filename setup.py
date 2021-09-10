@@ -18,7 +18,8 @@ setup(
     author_email='zhangacer@foxmail.com',
     description='QWebSite',
     install_requires=["click",
-                      "ping3"],
+                      "ping3",
+                      "wmi"],
     python_requires='>3.5',
     include_package_data=True,
     entry_points={

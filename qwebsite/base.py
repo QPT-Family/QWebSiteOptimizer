@@ -7,14 +7,14 @@ from qwebsite.flags import *
 
 
 def get_active_ip(host="github.com"):
-    result = socket.getaddrinfo(host, None, socket.AddressFamily.AF_INET, socket.SOCK_STREAM)
     ips = list()
+    try:
+        result = socket.getaddrinfo(host, None, socket.AddressFamily.AF_INET, socket.SOCK_STREAM)
+    except socket.gaierror:
+        return ips
+
     for item in result:
-        # ToDo 回家看看还有啥情况
-        try:
-            ip = item[4][0]
-        except Exception:
-            continue
+        ip = item[4][0]
         ping_time = ping3.ping(ip, timeout=4, unit='ms')
         if ping_time:
             ips.append((ip, ping_time))
@@ -50,6 +50,8 @@ class EditHost:
             line = line_ori.strip("\n").split("\t")
             if len(line) == 2:
                 self.host_kv[line[1]] = line[0]
+            elif not line[0]:
+                continue
             elif line[0][0] == "#":
                 self.hosts_data.append(line[0] + "\n")
             else:
@@ -79,8 +81,9 @@ class BaseOptimizer:
             for url in self.urls:
                 self.ed.del_data(url)
         else:
+            os.popen('ipconfig /flushdns')
             for url in self.urls:
-                for i in range(3):
+                for i in range(2):
                     ip_info = get_active_ip(url)
                     if ip_info:
                         ip, ms = ip_info[0]
@@ -143,3 +146,4 @@ if __name__ == '__main__':
     # _ed.add_data(_tmp, _url)
     # _ed.write("./test.txt")
     GitHubOptimizer()
+    # https://www.cnblogs.com/nicholas-920610/articles/7149057.html

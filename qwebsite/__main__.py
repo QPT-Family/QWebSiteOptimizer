@@ -9,12 +9,19 @@ from qwebsite.flags import *
 
 
 @click.command()
+@click.option("-g",
+              "--gui",
+              type=bool,
+              default=True,
+              help="图形化界面模式")
 @click.option("-r",
               "--reset",
               type=bool,
               default=False,
               help="恢复模式")
-def cli(reset):
+def cli(gui, reset):
+    if gui:
+        pass
     if reset:
         GitHubOptimizer(mode=RESET_FLAG)
     else:

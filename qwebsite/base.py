@@ -71,7 +71,7 @@ class EditHost:
 
 
 class BaseOptimizer:
-    def __init__(self, urls, mode=ADD_FLAG):
+    def __init__(self, urls, mode=ADD_FLAG, progressbar=None):
         if OS_FLAG == OS_FLAG_WINDOWS:
             try:
                 import ctypes
@@ -83,14 +83,19 @@ class BaseOptimizer:
         self.ed = EditHost()
         self.mode = mode
         self._make()
+        self.print_kv()
+
+        self.progressbar = progressbar
 
     def _make(self):
+        scale = 1. / len(self.urls)
         if self.mode == RESET_FLAG:
             for url in self.urls:
                 self.ed.del_data(url)
         else:
             os.popen('ipconfig /flushdns')
-            for url in self.urls:
+            for url_id, url in enumerate(self.urls):
+                self.progressbar.set(scale * scale)
                 for i in range(2):
                     ip_info = get_active_ip(url)
                     if ip_info:
@@ -105,6 +110,15 @@ class BaseOptimizer:
                     print(f"\r\033[33mWarning:\t{url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
                           f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。\033[0m")
         self.ed.write()
+        self.progressbar.set(100)
+
+    def print_kv(self):
+        print("# -----------以下为当前网络环境下站点匹配情况-----------")
+        kv = self.ed.host_kv
+        for k, v in kv.items():
+            line = f"{v}\t{k}\n"
+            print(line)
+        print("# -----------以下为当前网络环境下站点匹配情况-----------")
 
 
 class GitHubOptimizer(BaseOptimizer):

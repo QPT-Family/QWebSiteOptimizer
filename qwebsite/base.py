@@ -78,13 +78,13 @@ class EditHost:
 
 class BaseOptimizer:
     def __init__(self, urls, mode=ADD_FLAG, progressbar=None):
-        if OS_FLAG == OS_FLAG_WINDOWS:
-            try:
-                import ctypes
-                ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
-            except Exception as e:
-                print("当前操作系统安全策略无法使用ctypes模块，请安装杀毒软件修复系统漏洞进行解决，报错如下：", e)
-                exit(1)
+#         if OS_FLAG == OS_FLAG_WINDOWS:
+#             try:
+#                 import ctypes
+#                 ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
+#             except Exception as e:
+#                 print("当前操作系统安全策略无法使用ctypes模块，请安装杀毒软件修复系统漏洞进行解决，报错如下：", e)
+#                 exit(1)
         self.urls = urls
         self.ed = EditHost()
         self.mode = mode

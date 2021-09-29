@@ -32,8 +32,9 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
 ## 使用教程
 
 * 启动GUI  
-  * Windows - 需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
+  * Windows - DNS选优需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
     ```
+    %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
     python -m qwebsite
     ```
   * Linux or MacOS  
@@ -41,9 +42,10 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
     sudo python -m qwebsite
     ```
 * 快捷命令  
-  * Windows - 需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
+  * Windows - DNS选优需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
     ```
     # DNS结果选优
+    %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
     python -m qwebsite -g Flase
     # 恢复Hosts
     python -m qwebsite -g Flase -r True
@@ -51,6 +53,7 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
   * Linux or MacOS  
     ```
     # DNS结果选优
+    %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
     sudo python -m qwebsite -g Flase
     # 恢复Hosts
     sudo python -m qwebsite -g Flase -r True

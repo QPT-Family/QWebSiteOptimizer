@@ -112,7 +112,7 @@ class BaseOptimizer:
                     ip_info = get_active_ip(url)
                     if ip_info:
                         ip, ms = ip_info[0]
-                        print(f"Info:\t{url}\t匹配到最快路径，延时为{ms:.4f}ms")
+                        print(f"Info:\t{url}\t匹配到最快路径，延时为{ms:.4f}s")
                         self.ed.add_data(ip, url)
                         break
                     else:

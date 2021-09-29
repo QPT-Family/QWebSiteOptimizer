@@ -22,18 +22,18 @@
 
 ## 安装方式
 
-```
+```shell
 python -m pip install qwebsite
 ```
 or
-```
+```shell
 python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
 ```
 ## 使用教程
 
 * 启动GUI  
   * Windows - DNS选优需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
-    ```
+    ```shell
     %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
     python -m qwebsite
     ```
@@ -43,7 +43,7 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
     ```
 * 快捷命令  
   * Windows - DNS选优需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
-    ```
+    ```shell
     # DNS结果选优
     %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
     python -m qwebsite -g Flase
@@ -51,9 +51,7 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
     python -m qwebsite -g Flase -r True
     ```
   * Linux or MacOS  
-    ```
-    # DNS结果选优
-    %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
+    ```shell
     sudo python -m qwebsite -g Flase
     # 恢复Hosts
     sudo python -m qwebsite -g Flase -r True

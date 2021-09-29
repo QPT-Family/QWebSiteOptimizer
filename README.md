@@ -15,7 +15,10 @@
 > 本程序源码完全开源开放，默认仅优化GitHub站点，后续将提供自定义网站优化教程。
 
 ## 运行界面
-<img src="ext/RUN.png" width="300px"></img>
+<div align="center">
+<img src="ext/RUN.png" width="500px"></img>
+</div>
+
 
 ## 安装方式
 

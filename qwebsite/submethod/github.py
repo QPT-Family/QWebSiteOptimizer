@@ -39,6 +39,8 @@ def ping_iso(url):
         print(f"镜像源\t{url}的响应时间为{ping_time:.4f}s")
     except requests.exceptions.ConnectTimeout:
         print(f"镜像源\t{url}长时间无响应")
+    except Exception as e:
+        print(e, "发生了异常，可能无法使用该镜像源")
 
 
 def clean_iso(url):
@@ -60,6 +62,7 @@ def get_iso():
 def ping_callback(args):
     url = args["下拉选择框"].get()
     ping_iso(url=url)
+    print("指令已完成")
 
 
 def clean_callback(args):
@@ -78,10 +81,12 @@ def set_callback(args):
 
 def set_hosts(args):
     GitHubOptimizer()
+    print("指令已完成")
 
 
 def reset_hosts(args):
     GitHubOptimizer(RESET_FLAG)
+    print("指令已完成")
 
 
 class QWebSiteOptGUI:

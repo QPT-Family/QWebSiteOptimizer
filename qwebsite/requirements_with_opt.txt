@@ -1,0 +1,36 @@
+# Here is the list of packages automatically derived by QPT
+# you can ignore the dependent packages in the main package and only care about the main package
+# For example, you need to install paddlepaddle and pillow, because paddlepaddle relies on pillow, so you only need to install paddlepaddle.
+# ---------------------------------------------------------------------
+# QPT Home:        https://github.com/GT-ZhangAcer/QPT
+# ---------------------------------------------------------------------
+# 
+# -------------Mainly depends on package analysis results--------------
+
+qwebsite
+requests==2.26.0
+qgui
+qpt==1.0b1.dev5
+
+# ----------------------Ignored dependent packages---------------------
+#ping3==3.0.2
+#wheel==0.36.2
+#wmi==1.5.1
+
+# ----------------------Ignored sub dependent packages---------------------
+
+# -----Dependencies of requests
+#certifi>=2017.4.17
+#urllib3<1.27,>=1.21.1
+#charset-normalizer~=2.0.0
+#idna<4,>=2.5
+
+# -----Dependencies of qgui
+#pillow
+#ttkbootstrap
+
+# -----Dependencies of qpt
+#pefile
+#wget
+#pillow
+#click

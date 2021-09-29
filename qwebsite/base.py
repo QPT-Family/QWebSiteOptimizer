@@ -1,8 +1,7 @@
 import socket
 import time
 import sys
-
-import ping3
+import requests
 
 from qwebsite.flags import *
 
@@ -16,9 +15,11 @@ def get_active_ip(host="github.com"):
 
     for item in result:
         ip = item[4][0]
-        ping_time = ping3.ping(ip, timeout=4, unit='ms')
-        if ping_time:
+        try:
+            ping_time = requests.get(ip, timeout=4).elapsed.total_seconds()
             ips.append((ip, ping_time))
+        except requests.exceptions.ConnectTimeout:
+            pass
     ips_sort = sorted(ips, key=lambda x: x[1])
     return ips_sort
 
@@ -84,8 +85,15 @@ class BaseOptimizer:
         self.mode = mode
         self._make()
         self.print_kv()
-
-        self.progressbar = progressbar
+        if progressbar:
+            self.progressbar = progressbar
+        else:
+            class TMP:
+                def __init__(self):
+                    pass
+                def set(self,n):
+                    pass
+            self.progressbar = TMP()
 
     def _make(self):
         scale = 1. / len(self.urls)
@@ -95,7 +103,7 @@ class BaseOptimizer:
         else:
             os.popen('ipconfig /flushdns')
             for url_id, url in enumerate(self.urls):
-                self.progressbar.set(scale * scale)
+                # self.progressbar.set(scale * scale)
                 for i in range(2):
                     ip_info = get_active_ip(url)
                     if ip_info:
@@ -110,7 +118,7 @@ class BaseOptimizer:
                     print(f"\r\033[33mWarning:\t{url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，"
                           f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。\033[0m")
         self.ed.write()
-        self.progressbar.set(100)
+        # self.progressbar.set(100)
 
     def print_kv(self):
         print("# -----------以下为当前网络环境下站点匹配情况-----------")

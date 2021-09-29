@@ -6,6 +6,7 @@
 import click
 from qwebsite.base import GitHubOptimizer
 from qwebsite.flags import *
+from qwebsite.submethod.github import QWebSiteOptGUI
 
 
 @click.command()
@@ -21,7 +22,7 @@ from qwebsite.flags import *
               help="恢复模式")
 def cli(gui, reset):
     if gui:
-        pass
+        QWebSiteOptGUI().run()
     if reset:
         GitHubOptimizer(mode=RESET_FLAG)
     else:
@@ -29,4 +30,4 @@ def cli(gui, reset):
 
 
 if __name__ == '__main__':
-    cli()
+    cli([])

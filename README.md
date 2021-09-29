@@ -32,7 +32,7 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
 ## 使用教程
 
 * 启动GUI  
-  * Windows - 需要管理员权限  
+  * Windows - 需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
     ```
     python -m qwebsite
     ```
@@ -41,7 +41,7 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
     sudo python -m qwebsite
     ```
 * 快捷命令  
-  * Windows - 需要管理员权限  
+  * Windows - 需要管理员权限 - 可按Win+x组合键打开选择带有管理员权限的CMD或PowerShell  
     ```
     # DNS结果选优
     python -m qwebsite -g Flase

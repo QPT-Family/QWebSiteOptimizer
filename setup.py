@@ -18,7 +18,6 @@ setup(
     author_email='zhangacer@foxmail.com',
     description='QWebSite',
     install_requires=["click",
-                      "ping3,"
                       "qgui"],
     python_requires='>3.5',
     include_package_data=True,

@@ -104,6 +104,7 @@ class BaseOptimizer:
         if self.mode == RESET_FLAG:
             for url in self.urls:
                 self.ed.del_data(url)
+            print("恢复完毕！")
         else:
             os.popen('ipconfig /flushdns')
             for url_id, url in enumerate(self.urls):

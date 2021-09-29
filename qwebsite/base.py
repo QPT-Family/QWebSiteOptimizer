@@ -68,8 +68,11 @@ class EditHost:
         for k, v in self.host_kv.items():
             line = f"{v}\t{k}\n"
             pre_data.append(line)
-        with open(out_dir, "w") as f:
-            f.writelines(pre_data + self.hosts_data_end)
+        try:
+            with open(out_dir, "w") as f:
+                f.writelines(pre_data + self.hosts_data_end)
+        except PermissionError:
+            print("PermissionError 请以管理员模式运行本软件！")
         self._update()
 
 
@@ -117,6 +120,7 @@ class BaseOptimizer:
                         self.ed.add_data(ip, url)
                         break
                     else:
+                        print(f"{url}链接出现了问题，正在尝试重连，请稍候")
                         print(f"\r正在尝试重连...第{i + 1}次", flush=True, end="")
                         time.sleep(3)
                 else:

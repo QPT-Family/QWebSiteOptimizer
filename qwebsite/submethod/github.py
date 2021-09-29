@@ -70,6 +70,7 @@ def clean_callback(args):
 
 def set_callback(args):
     url = args["下拉选择框"].get()
+    clean_iso(get_iso())
     set_iso(url)
     args["当前镜像源情况"].set(get_iso())
     print("设置完毕")
@@ -108,11 +109,11 @@ class QWebSiteOptGUI:
         iso_act = Label(name="当前镜像源情况", text=act, title="当前镜像源:")
         iso_comb = Combobox(name="下拉选择框", title="选择镜像源:", options=ISO_LIST)
 
-        iso_ping = BaseButton(bind_func=ping_callback, text="Ping测试", checked_text="正在测试ing", style="info")
+        iso_ping = BaseButton(bind_func=ping_callback, text="Ping镜像源", checked_text="正在测试ing", style="info")
         iso_clear = BaseButton(bind_func=clean_callback, text="清除镜像源", checked_text="正在清除ing", style="success")
         iso_set = BaseButton(bind_func=set_callback, text="设置镜像源", checked_text="正在设置ing", style="danger")
 
-        iso_btn = HorizontalToolsCombine(tools=[iso_comb, iso_ping, iso_clear, iso_set])
+        iso_btn = HorizontalToolsCombine(tools=[iso_comb, iso_ping, iso_set, iso_clear])
 
         self.gui.add_notebook_tool(HorizontalFrameCombine(tools=[iso_act, iso_btn],
                                                           title="镜像源模式",

@@ -21,14 +21,17 @@
 
 
 ## 安装方式
+* 使用Windows安装包进行安装  
+  > 点击下载[GitHub加速工具V0.9版本](https://bj.bcebos.com/v1/ai-studio-online/0fbc4cfccb3f42139bfd98bf976298d5c64664bd1981442081d8177a8609d24a?responseContentDisposition=attachment%3B%20filename%3DGitHub%E5%8A%A0%E9%80%9F%E5%B7%A5%E5%85%B7V0.9.zip)完整安装包
 
-```shell
-python -m pip install qwebsite
-```
-or
-```shell
-python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
-```
+* 使用Python包管理器进行安装【推荐】  
+  ```shell
+  python -m pip install qwebsite
+  ```
+  or
+  ```shell
+  python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
+  ```
 ## 使用教程
 
 * 启动GUI  

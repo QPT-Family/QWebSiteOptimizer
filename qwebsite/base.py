@@ -16,7 +16,7 @@ def get_active_ip(host="github.com"):
     for item in result:
         ip = item[4][0]
         try:
-            ping_time = requests.get(ip, timeout=4).elapsed.total_seconds()
+            ping_time = requests.get(f"https://{ip}", timeout=4).elapsed.total_seconds()
             ips.append((ip, ping_time))
         except requests.exceptions.ConnectTimeout:
             pass
@@ -124,7 +124,7 @@ class BaseOptimizer:
         print("# -----------以下为当前网络环境下站点匹配情况-----------")
         kv = self.ed.host_kv
         for k, v in kv.items():
-            line = f"{v}\t{k}\n"
+            line = f"{v}\t{k}"
             print(line)
         print("# -----------以下为当前网络环境下站点匹配情况-----------")
 

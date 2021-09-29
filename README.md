@@ -12,9 +12,10 @@
   2. 优化情况取决与您的DNS配置情况以及网络本身质量，必要时请自行搜索如何修改本机DNS。
   3. 这些方式并不如专有VPN稳定，也并非科学上网，仅仅是速度优化而已。换句话就是政策不允许访问的依旧不会让您访问。
 
-* 目前仅提供修改Hosts方式，后续版本将增加镜像源加速功能。
-
 > 本程序源码完全开源开放，默认仅优化GitHub站点，后续将提供自定义网站优化教程。
+
+## 运行界面
+<img src="ext/RUN.png" width="300px"></img>
 
 ## 安装方式
 
@@ -27,10 +28,8 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
 ```
 ## 使用教程
 
-还没做GUI和镜像源优化方式，目前仅提供以下操作，勉强够用  
-
-* 优化命令  
-  * Windows  
+* 启动GUI  
+  * Windows - 需要管理员权限  
   ```
   python -m qwebsite
   ```
@@ -38,14 +37,20 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
   ```
   sudo python -m qwebsite
   ```
-* 恢复命令  
-  * Windows[建议管理员模式运行]  
+* 快捷命令  
+  * Windows - 需要管理员权限  
   ```
-  python -m qwebsite -r True
+  # DNS结果选优
+  python -m qwebsite -g Flase
+  # 恢复Hosts
+  python -m qwebsite -g Flase -r True
   ```
   * Linux or MacOS  
   ```
-  sudo python -m qwebsite -r True
+  # DNS结果选优
+  sudo python -m qwebsite -g Flase
+  # 恢复Hosts
+  sudo python -m qwebsite -g Flase -r True
   ```
 
 ## 开源协议

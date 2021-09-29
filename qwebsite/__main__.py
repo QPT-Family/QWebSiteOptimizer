@@ -23,10 +23,11 @@ from qwebsite.submethod.github import QWebSiteOptGUI
 def cli(gui, reset):
     if gui:
         QWebSiteOptGUI().run()
-    if reset:
-        GitHubOptimizer(mode=RESET_FLAG)
     else:
-        GitHubOptimizer()
+        if reset:
+            GitHubOptimizer(mode=RESET_FLAG)
+        else:
+            GitHubOptimizer()
 
 
 if __name__ == '__main__':

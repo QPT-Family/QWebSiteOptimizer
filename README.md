@@ -33,28 +33,28 @@ python -m pip install qwebsite -i https://mirrors.bfsu.edu.cn/pypi/web/simple
 
 * 启动GUI  
   * Windows - 需要管理员权限  
-  ```
-  python -m qwebsite
-  ```
+    ```
+    python -m qwebsite
+    ```
   * Linux or MacOS  
-  ```
-  sudo python -m qwebsite
-  ```
+    ```
+    sudo python -m qwebsite
+    ```
 * 快捷命令  
   * Windows - 需要管理员权限  
-  ```
-  # DNS结果选优
-  python -m qwebsite -g Flase
-  # 恢复Hosts
-  python -m qwebsite -g Flase -r True
-  ```
+    ```
+    # DNS结果选优
+    python -m qwebsite -g Flase
+    # 恢复Hosts
+    python -m qwebsite -g Flase -r True
+    ```
   * Linux or MacOS  
-  ```
-  # DNS结果选优
-  sudo python -m qwebsite -g Flase
-  # 恢复Hosts
-  sudo python -m qwebsite -g Flase -r True
-  ```
+    ```
+    # DNS结果选优
+    sudo python -m qwebsite -g Flase
+    # 恢复Hosts
+    sudo python -m qwebsite -g Flase -r True
+    ```
 
 ## 开源协议
 本项目使用GNU General Public License v3.0(GPL)开源协议。

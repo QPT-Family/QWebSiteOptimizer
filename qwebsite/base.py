@@ -5,6 +5,8 @@ import requests
 
 from qwebsite.flags import *
 
+requests.packages.urllib3.disable_warnings()
+
 
 def get_active_ip(host="github.com"):
     ips = list()
@@ -16,9 +18,9 @@ def get_active_ip(host="github.com"):
     for item in result:
         ip = item[4][0]
         try:
-            ping_time = requests.get(f"https://{ip}", timeout=4).elapsed.total_seconds()
+            ping_time = requests.get(f"https://{ip}", timeout=4, verify=False).elapsed.total_seconds()
             ips.append((ip, ping_time))
-        except requests.exceptions.ConnectTimeout:
+        except:
             pass
     ips_sort = sorted(ips, key=lambda x: x[1])
     return ips_sort
@@ -91,8 +93,10 @@ class BaseOptimizer:
             class TMP:
                 def __init__(self):
                     pass
-                def set(self,n):
+
+                def set(self, n):
                     pass
+
             self.progressbar = TMP()
 
     def _make(self):
@@ -126,7 +130,7 @@ class BaseOptimizer:
         for k, v in kv.items():
             line = f"{v}\t{k}"
             print(line)
-        print("# -----------以下为当前网络环境下站点匹配情况-----------")
+        print("# -------------------------------------------------")
 
 
 class GitHubOptimizer(BaseOptimizer):

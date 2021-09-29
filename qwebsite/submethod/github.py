@@ -41,8 +41,6 @@ def ping_iso(url):
         print(f"镜像源\t{url}长时间无响应")
 
 
-
-
 def clean_iso(url):
     out = os.popen(f"git config --global --unset url.{url}.insteadof").read()
     if out:
@@ -94,8 +92,8 @@ class QWebSiteOptGUI:
                                       version=__version__,
                                       github_url="https://github.com/QPT-Family/QWebSiteOptimizer")
         # DNS解析选优功能区
-        set_dns_opt = BaseButton(bind_func=set_hosts, text="开始DNS选优", style="info")
-        clear_dns_opt = BaseButton(bind_func=reset_hosts, text="清除DNS选优", style="success")
+        set_dns_opt = BaseButton(bind_func=set_hosts, text="开始DNS选优", checked_text="正在选优ing", style="info")
+        clear_dns_opt = BaseButton(bind_func=reset_hosts, text="清除DNS选优", checked_text="正在清除ing", style="success")
         self.gui.add_notebook_tool(HorizontalToolsCombine(tools=[set_dns_opt, clear_dns_opt],
                                                           title="[ROOT] DNS解析选优 - 需要管理员权限",
                                                           text="通过对多个DNS返回的结果进行筛选，匹配当前网络环境下最快的解析地址并设置Host文件，"
@@ -110,9 +108,9 @@ class QWebSiteOptGUI:
         iso_act = Label(name="当前镜像源情况", text=act, title="当前镜像源:")
         iso_comb = Combobox(name="下拉选择框", title="选择镜像源:", options=ISO_LIST)
 
-        iso_ping = BaseButton(bind_func=ping_callback, text="Ping测试", style="info")
-        iso_clear = BaseButton(bind_func=clean_callback, text="清除镜像源", style="success")
-        iso_set = BaseButton(bind_func=set_callback, text="设置镜像源", style="danger")
+        iso_ping = BaseButton(bind_func=ping_callback, text="Ping测试", checked_text="正在测试ing", style="info")
+        iso_clear = BaseButton(bind_func=clean_callback, text="清除镜像源", checked_text="正在清除ing", style="success")
+        iso_set = BaseButton(bind_func=set_callback, text="设置镜像源", checked_text="正在设置ing", style="danger")
 
         iso_btn = HorizontalToolsCombine(tools=[iso_comb, iso_ping, iso_clear, iso_set])
 

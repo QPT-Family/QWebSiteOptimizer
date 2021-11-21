@@ -21,7 +21,7 @@ ISO_LIST = ["https://hub.fastgit.org",
 
 
 def set_iso(url):
-    out = os.popen(f"git config --global url.{url}.insteadof https://github.com/").read()
+    out = os.popen(f"git config --global url.{url}.insteadof https://github.com").read()
     if out:
         print("执行情况如下：\n", out)
 

@@ -109,7 +109,6 @@ class BaseOptimizer:
                 self.ed.del_data(url)
             print("恢复完毕！")
         else:
-            os.popen('ipconfig /flushdns')
             for url_id, url in enumerate(self.urls):
                 # self.progressbar.set(scale * scale)
                 for i in range(2):
@@ -127,6 +126,7 @@ class BaseOptimizer:
                     print(f"Warning:\t{url}\t中未搜索到可用IP，可能由于政策与法规限制，也可能是您的DNS出现了问题，\n"
                           f"可尝试修改本地网络DNS设置来解决非政策引起的搜索失败问题。")
         self.ed.write()
+        os.popen('ipconfig /flushdns')
         # self.progressbar.set(100)
 
     def print_kv(self):
